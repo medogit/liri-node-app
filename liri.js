@@ -1,6 +1,7 @@
 var action = process.argv[2];
 var value = process.argv[3];
-var keys = require("./key.js");
+var request = require('request');
+var keys = require("./keys.js");
 var Twitter = require('twitter');
 var client = new Twitter(keys.twitterKeys);
 var fs = require("fs");
@@ -18,7 +19,7 @@ switch (action) {
         spotifyThis(value);
         break;
     case 'movie-this':
-        movie - this(value);
+        movieThis(value);
         break;
     case 'dowhatitsays':
         random();
@@ -50,67 +51,71 @@ function myTweets() {
             });
         }
     });
-    // spotifyThissong
-    function spotifyThis(value) {
-        if (value == null) {
-            value = 'The Sign';
-        }
-        request('https://api.spotify.com/v1/search?q=' + value + '&type=track', function(error, response, body) {
-            if (!error && response.statusCode == 200) {
-                jsonBody = JSON.parse(body);
-                console.log(' ');
-                console.log('Artist: ' + jsonBody.tracks.items[0].artists[0].name);
-                console.log('Song: ' + jsonBody.tracks.items[0].name);
-                console.log('Preview Link: ' + jsonBody.tracks.items[0].preview_url);
-                console.log('Album: ' + jsonBody.tracks.items[0].album.name);
-                console.log(' ');
-                fs.appendFile('terminal.log', ('----------Start logging------------\r\n' + Date() + '\r\n \r\nTERMINAL COMMANDS:\r\n$: ' + process.argv + '\r\n \r\nDATA OUTPUT:\r\n' + 'Artist: ' + jsonBody.tracks.items[0].artists[0].name + '\r\nSong: ' + jsonBody.tracks.items[0].name + '\r\nPreview Link: ' + jsonBody.tracks.items[0].preview_url + '\r\nAlbum: ' + jsonBody.tracks.items[0].album.name + '\r\n----------End logging------------\r\n \r\n'), function(err) {
-                    if (err) throw err;
-                });
-            }
-        });
-    } // end spotifyThis function
+}
+// spotifyThissong
 
-    // omdbThis function
-    function omdbThis(value) {
-        if (value == null) {
-            value = 'Mr. Nobody';
-        }
-        request('http://www.omdbapi.com/?t=' + value + '&tomatoes=true&r=json', function(error, response, body) {
-            if (!error && response.statusCode == 200) {
-                jsonBody = JSON.parse(body);
-                console.log(' ');
-                console.log('Title: ' + jsonBody.Title);
-                console.log('Year: ' + jsonBody.Year);
-                console.log('IMDb Rating: ' + jsonBody.imdbRating);
-                console.log('Country: ' + jsonBody.Country);
-                console.log('Language: ' + jsonBody.Language);
-                console.log('Plot: ' + jsonBody.Plot);
-                console.log('Actors: ' + jsonBody.Actors);
-                console.log('Rotten Tomatoes Rating: ' + jsonBody.tomatoRating);
-                console.log('Rotten Tomatoes URL: ' + jsonBody.tomatoURL);
-                console.log(' ');
-                fs.appendFile('log.txt', ('----------Start logging------------\r\n' + Date() + '\r\n \r\nTERMINAL COMMANDS: ' + process.argv + '\r\nDATA OUTPUT:\r\n' + 'Title: ' + jsonBody.Title + '\r\nYear: ' + jsonBody.Year + '\r\nIMDb Rating: ' + jsonBody.imdbRating + '\r\nCountry: ' + jsonBody.Country + '\r\nLanguage: ' + jsonBody.Language + '\r\nPlot: ' + jsonBody.Plot + '\r\nActors: ' + jsonBody.Actors + '\r\nRotten Tomatoes Rating: ' + jsonBody.tomatoRating + '\r\nRotten Tomatoes URL: ' + jsonBody.tomatoURL + '\r\n----------End logging------------\r\n \r\n'), function(err) {
-                    if (err) throw err;
-                });
-            }
-        });
-    } //end omdbThis function
-
-    // random function
-    function random() {
-        fs.readFile('random.txt', 'utf8', function(error, data) {
-            if (error) {
-                console.log(error);
-            } else {
-                var dataArr = data.split(',');
-                if (dataArr[0] === 'spotify') {
-                    spotifyThis(dataArr[1]);
-                }
-                if (dataArr[0] === 'omdb') {
-                    omdbThis(dataArr[1]);
-                }
-            }
-        });
+function spotifyThis(value) {
+    console.log("spotify")
+    if (value == null) {
+        value = 'The Sign';
     }
+    request('https://api.spotify.com/v1/search?q=' + value + '&type=track', function(error, response, body) {
+        console.log(body);
+        if (!error && response.statusCode == 200) {
+            console.log("calling");
+            jsonBody = JSON.parse(body);
+            console.log(' ');
+            console.log('Artist: ' + jsonBody.tracks.items[0].artists[0].name);
+            console.log('Song: ' + jsonBody.tracks.items[0].name);
+            console.log('Preview Link: ' + jsonBody.tracks.items[0].preview_url);
+            console.log('Album: ' + jsonBody.tracks.items[0].album.name);
+            console.log(' ');
+            fs.appendFile('terminal.log', ('----------Start logging------------\r\n' + Date() + '\r\n \r\nTERMINAL COMMANDS:\r\n$: ' + process.argv + '\r\n \r\nDATA OUTPUT:\r\n' + 'Artist: ' + jsonBody.tracks.items[0].artists[0].name + '\r\nSong: ' + jsonBody.tracks.items[0].name + '\r\nPreview Link: ' + jsonBody.tracks.items[0].preview_url + '\r\nAlbum: ' + jsonBody.tracks.items[0].album.name + '\r\n----------End logging------------\r\n \r\n'), function(err) {
+                if (err) throw err;
+            });
+        }
+    });
+} // end spotifyThis function
+
+// omdbThis function
+function movieThis(value) {
+    if (value == null) {
+        value = 'Mr. Nobody';
+    }
+    request('http://www.omdbapi.com/?t=' + value + '&tomatoes=true&r=json', function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            jsonBody = JSON.parse(body);
+            console.log(' ');
+            console.log('Title: ' + jsonBody.Title);
+            console.log('Year: ' + jsonBody.Year);
+            console.log('IMDb Rating: ' + jsonBody.imdbRating);
+            console.log('Country: ' + jsonBody.Country);
+            console.log('Language: ' + jsonBody.Language);
+            console.log('Plot: ' + jsonBody.Plot);
+            console.log('Actors: ' + jsonBody.Actors);
+            console.log('Rotten Tomatoes Rating: ' + jsonBody.tomatoRating);
+            console.log('Rotten Tomatoes URL: ' + jsonBody.tomatoURL);
+            console.log(' ');
+            fs.appendFile('log.txt', ('----------Start logging------------\r\n' + Date() + '\r\n \r\nTERMINAL COMMANDS: ' + process.argv + '\r\nDATA OUTPUT:\r\n' + 'Title: ' + jsonBody.Title + '\r\nYear: ' + jsonBody.Year + '\r\nIMDb Rating: ' + jsonBody.imdbRating + '\r\nCountry: ' + jsonBody.Country + '\r\nLanguage: ' + jsonBody.Language + '\r\nPlot: ' + jsonBody.Plot + '\r\nActors: ' + jsonBody.Actors + '\r\nRotten Tomatoes Rating: ' + jsonBody.tomatoRating + '\r\nRotten Tomatoes URL: ' + jsonBody.tomatoURL + '\r\n----------End logging------------\r\n \r\n'), function(err) {
+                if (err) throw err;
+            });
+        }
+    });
+} //end omdbThis function
+
+// random function
+function random() {
+    fs.readFile('random.txt', 'utf8', function(error, data) {
+        if (error) {
+            console.log(error);
+        } else {
+            var dataArr = data.split(',');
+            if (dataArr[0] === 'spotify') {
+                spotifyThis(dataArr[1]);
+            }
+            if (dataArr[0] === 'omdb') {
+                omdbThis(dataArr[1]);
+            }
+        }
+    });
 }

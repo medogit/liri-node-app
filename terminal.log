@@ -1,0 +1,49 @@
+=============== LOG ENTRY BEGIN ===============
+Tue Aug 22 2017 21:51:07 GMT-0400 (EDT)
+ 
+TERMINAL COMMANDS:
+$: /usr/local/Cellar/node/8.0.0_1/bin/node,/Users/MehdiHD/Documents/School Work/UNH Coding BootCamp/Week 12/HW/liri-node-app/liri.js,my-tweets
+ 
+DATA OUTPUT:
+1. Tweet: Tired 20
+Created at: Sat Aug 19 18:32:58 +0000 2017 
+2. Tweet: Very 19
+Created at: Sat Aug 19 18:32:53 +0000 2017 
+3. Tweet: very 18
+Created at: Sat Aug 19 18:32:47 +0000 2017 
+4. Tweet: 8D
+Created at: Sat Aug 19 18:32:26 +0000 2017 
+5. Tweet: RE
+Created at: Sat Aug 19 18:32:19 +0000 2017 
+6. Tweet: HE
+Created at: Sat Aug 19 18:32:15 +0000 2017 
+7. Tweet: T
+Created at: Sat Aug 19 18:32:05 +0000 2017 
+8. Tweet: Y
+Created at: Sat Aug 19 18:32:01 +0000 2017 
+9. Tweet: E
+Created at: Sat Aug 19 18:31:58 +0000 2017 
+10. Tweet: H
+Created at: Sat Aug 19 18:31:55 +0000 2017 
+11. Tweet: generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum
+Created at: Sat Aug 19 18:31:40 +0000 2017 
+12. Tweet: This assignment is driving me crazy :D
+Created at: Sat Aug 19 18:31:30 +0000 2017 
+13. Tweet: he majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If yo
+Created at: Sat Aug 19 18:31:16 +0000 2017 
+14. Tweet: rom a Lorem Ipsum passage, and going through the cites of the word
+Created at: Sat Aug 19 18:31:00 +0000 2017 
+15. Tweet: This book is a treatise on the theory of ethics, very popular during the Renaissance.
+Created at: Sat Aug 19 18:30:30 +0000 2017 
+16. Tweet: re obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature,
+Created at: Sat Aug 19 18:30:14 +0000 2017 
+17. Tweet: sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and
+Created at: Sat Aug 19 18:29:52 +0000 2017 
+18. Tweet: sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected).
+Created at: Sat Aug 19 18:29:40 +0000 2017 
+19. Tweet: when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
+Created at: Sat Aug 19 18:29:19 +0000 2017 
+20. Tweet: rem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since
+Created at: Sat Aug 19 18:29:09 +0000 2017 
+=============== LOG ENTRY END ===============
+ 
